@@ -38,10 +38,16 @@ const calcNewVelocity = ({ velocity, acceleration, timeSec }) => {
   return velocity + (accelerationKmh2 * secondsToHours(timeSec));
 };
 
-console.log(`Corrected New Velocity: ${vel2} km/h`);
-console.log(`Corrected New Distance: ${d2} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+// Calculate new distance
+const calculateNewDistance = ({ initialDistance, velocity, timeSec }) => {
+  return initialDistance + (velocity * secondsToHours(timeSec));
+};
 
+
+// Calculate remaining fuel
+const calculateRemainingFuel = ({ burnRate, timeSec }) => {
+  return burnRate * timeSec; // in kg
+};
 
 
 
