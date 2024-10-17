@@ -17,15 +17,16 @@
 const parameters = {
   velocity: 10000, // velocity (km/h)
   acceleration: 3, // acceleration (m/s^2)
-  time: 3600, // time in seconds (1 hour)
+  timeSec: 3600, // time in seconds (1 hour)
   initialDistance: 0, // initial distance in km
   remainingFuel: 5000, // remaining fuel in kg
   fuelBurnRate: 0.5 // fuel burn rate in kg/s
 };
 
-const d2 = d + (vel*time) //calcultes new distance
-const rf = fbr*time //calculates remaining fuel
-const vel2 = calcNewVel(acc, vel, time) //calculates new velocity based on acceleration
+// Function to convert seconds to hours
+const secondsToHours = (seconds) => {
+  return seconds / 3600; // Convert seconds to hours
+};
 
 // Pick up an error with how the function below is called and make it robust to such errors
 calcNewVel = (vel, acc, time) => { 
