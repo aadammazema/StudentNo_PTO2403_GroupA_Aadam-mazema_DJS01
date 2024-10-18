@@ -50,6 +50,31 @@ const calculateRemainingFuel = ({ burnRate, timeSec }) => {
 };
 
 
+// Calculate new values
+try {
+  const newDistance = calculateNewDistance({
+    initialDistance: parameters.initialDistance,
+    velocity: parameters.velocity,
+    timeSec: parameters.timeSec
+  });
+  
+  const fuelUsed = calculateRemainingFuel({
+    burnRate: parameters.fuelBurnRate,
+    timeSec: parameters.timeSec
+  });
+  
+  const newVelocity = calcNewVelocity({
+    velocity: parameters.velocity,
+    acceleration: parameters.acceleration,
+    timeSec: parameters.timeSec
+  });
+  
+  console.log(`Corrected New Velocity: ${newVelocity.toFixed(2)} km/h`);
+  console.log(`Corrected New Distance: ${newDistance.toFixed(2)} km`);
+  console.log(`Corrected Remaining Fuel: ${parameters.remainingFuel - fuelUsed} kg`);
+} catch (error) {
+  console.error(`Error: ${error.message}`);
+}
 
 
 
